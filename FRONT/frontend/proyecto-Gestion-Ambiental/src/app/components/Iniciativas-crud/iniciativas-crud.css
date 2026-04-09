@@ -1,0 +1,105 @@
+/**Autor: Sebastian Mendoza**/
+
+.search{
+    margin-bottom: 15px;
+    width: auto;
+}
+
+.error-text {
+  color: #d9534f;           
+  font-size: 0.85rem;
+  margin-top: 4px;
+  display: block;
+}
+
+input.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched,
+select.ng-invalid.ng-touched {
+  border-color: #d9534f !important;
+  box-shadow: 0 0 4px rgba(217, 83, 79, 0.4);
+}
+
+.radio-error {
+  outline: 2px solid #d9534f;
+  border-radius: 4px;
+  padding: 2px 6px;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5); 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1050; 
+}
+
+.overlay-content {
+  max-width: 600px;
+  width: 90%;
+}
+
+.thead-green tr th {
+    background-color: #234f1e !important;
+    color: white;
+    font-weight: bold; 
+}
+
+
+.btn-custom-green {
+    background-color: #234f1e;
+    border-color: #234f1e;
+    color: white;
+}
+.btn-custom-green:hover {
+    background-color: #1b3a16; 
+    border-color: #1b3a16;
+    color: white;
+}
+
+.btn-outline-custom-green {
+    color: #234f1e;
+    border-color: #234f1e;
+    background-color: transparent;
+}
+.btn-outline-custom-green:hover {
+    background-color: #234f1e;
+    color: white;
+}
+
+.text-custom-green {
+    color: #234f1e !important;
+}
+
+.info-panel {
+  position: fixed;
+  top: 0;
+  right: -420px;
+  width: 420px;
+  height: 100vh;
+  background: #fff;
+  box-shadow: -4px 0 15px rgba(0,0,0,0.2);
+  transition: right 0.3s ease;
+  z-index: 1050;
+}
+
+.info-panel.open {
+  right: 0;
+}
+
+.info-header {
+  padding: 1rem;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.info-body {
+  padding: 1rem;
+  overflow-y: auto;
+}

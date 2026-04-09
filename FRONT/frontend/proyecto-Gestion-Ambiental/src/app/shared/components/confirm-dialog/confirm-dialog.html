@@ -1,0 +1,32 @@
+<div *ngIf="visible" class="overlay">
+  <div class="dialog-card">
+
+    <div class="dialog-header">
+      <h3>{{ title }}</h3>
+      <button class="close-btn" (click)="cancel.emit()">×</button>
+    </div>
+
+    <div class="dialog-body">
+
+      <h5>{{ data?.nombre }}</h5>
+      <p>{{ data?.descripcion }}</p>
+
+      <div><strong>Categoría:</strong> {{ data?.categoria }}</div>
+      <div><strong>Fecha inicio:</strong> {{ data?.fechaInicio }}</div>
+      <div><strong>Estado:</strong> {{ data?.estado }}</div>
+
+      <img 
+        *ngIf="data?.imagen" 
+        [src]="data.imagen" 
+        style="width: 100%; margin-top: 10px; border-radius: 10px;"
+      />
+
+    </div>
+
+    <div class="dialog-actions">
+      <button class="btn cancel" (click)="cancel.emit()">Cerrar</button>
+      <button class="btn confirm" (click)="confirm.emit()">Aceptar</button>
+    </div>
+
+  </div>
+</div>

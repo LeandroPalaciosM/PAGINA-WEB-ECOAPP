@@ -1,0 +1,26 @@
+<!--
+ * Autora: Gabriela Solange Gonzalez Roman
+ * Fecha: 2025-12-01
+ * Descripción: HTML de Noticiaciones de éxito y error reutilizables.
+ */-->
+
+ <div *ngIf="visible" 
+     class="toast-container position-fixed top-0 end-0 p-3" 
+     style="z-index: 1100;">
+  
+  <div class="toast show align-items-center text-white border-0" 
+       [ngClass]="bgColor"
+       role="alert" aria-live="assertive" aria-atomic="true">
+    
+    <div class="d-flex">
+      <div class="toast-body">
+        <i [class]="iconClass" class="me-2"></i>
+        {{ message }}
+      </div>
+      
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" 
+              (click)="hide()"></button>
+    </div>
+
+  </div>
+</div>

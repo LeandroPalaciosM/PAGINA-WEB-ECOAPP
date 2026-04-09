@@ -1,0 +1,101 @@
+<!--Autor: Leandro PAlacios-->
+<div class="container mt-4">
+  <app-section-header 
+    title="Mi Perfil de Usuario" 
+    subtitle="Gestiona tu información personal y mantén tu cuenta actualizada."
+    icon="bi-person-badge-fill">
+  </app-section-header>
+
+  <form [formGroup]="formPerfil" (ngSubmit)="actualizarMisDatos()">
+    <div class="card shadow-sm mt-4">
+      <div class="card-body">
+        <div class="row">
+          
+          <div class="col-md-4 text-center border-end d-flex flex-column align-items-center justify-content-center">
+            <i class="bi bi-person-circle display-1 text-success"></i>
+            <h3 class="mt-2 text-capitalize">{{ usuario?.nombre }} {{ usuario?.apellido }}</h3>
+            <span class="badge bg-success fs-6 mb-3">{{ usuario?.rol }}</span>
+            
+            <div class="mt-2">
+              <span [ngClass]="usuario?.estado === 'Activo' ? 'text-success' : 'text-danger'" class="fw-bold">
+                <i class="bi" [ngClass]="usuario?.estado === 'Activo' ? 'bi-check-circle-fill' : 'bi-x-circle-fill'"></i>
+                {{ usuario?.estado === 'Activo' ? ' Cuenta Activa' : ' Cuenta Inactiva' }}
+              </span>
+            </div>
+          </div>
+
+          <div class="col-md-8 ps-4">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+              <h4 class="text-muted m-0">
+                {{ editando ? 'Editando Información' : 'Información de la Cuenta' }}
+              </h4>
+              
+              <button type="button" class="btn btn-sm" 
+                [ngClass]="editando ? 'btn-outline-danger' : 'btn-outline-primary'" 
+                (click)="toggleEdicion()">
+                <i class="bi" [ngClass]="editando ? 'bi-x-circle' : 'bi-pencil-square'"></i>
+                {{ editando ? ' Cancelar' : ' Editar Datos' }}
+              </button>
+            </div>
+            
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label class="fw-bold text-secondary">Nombre:</label>
+                <input type="text" class="form-control" formControlName="nombre" 
+                  [class.bg-light]="!editando">
+                @if (formPerfil.get('nombre')?.invalid && formPerfil.get('nombre')?.touched) {
+                  <small class="text-danger">Mínimo 6 caracteres.</small>
+                }
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <label class="fw-bold text-secondary">Apellido:</label>
+                <input type="text" class="form-control" formControlName="apellido"
+                  [class.bg-light]="!editando">
+                @if (formPerfil.get('apellido')?.invalid && formPerfil.get('apellido')?.touched) {
+                  <small class="text-danger">Mínimo 6 caracteres.</small>
+                }
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label class="fw-bold text-secondary">Correo Electrónico:</label>
+              <input type="email" class="form-control bg-light" formControlName="correo">
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label class="fw-bold text-secondary">Contraseña:</label>
+                <input type="password" class="form-control" formControlName="contrasena"
+                  [class.bg-light]="!editando">
+                @if (formPerfil.get('contrasena')?.invalid && formPerfil.get('contrasena')?.touched) {
+                  <small class="text-danger">Mínimo 6 caracteres.</small>
+                }
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <label class="fw-bold text-secondary">Rol asignado:</label>
+                <input type="text" class="form-control bg-light" formControlName="rol">
+                <small class="text-muted" *ngIf="editando" style="font-size: 0.75rem;">
+                </small>
+              </div>
+            </div>
+
+            <div class="d-grid gap-2 mt-4" *ngIf="editando">
+              <button type="submit" class="btn btn-success fw-bold" [disabled]="formPerfil.invalid">
+                <i class="bi bi-cloud-check me-2"></i>Guardar Cambios
+              </button>
+            </div>
+          </div> 
+        </div>
+      </div>
+      
+      <div class="card-footer bg-light d-flex justify-content-between align-items-center">
+        <small class="text-muted">ID Sesión: {{ usuario?.id_user }}</small>
+        <button type="button" class="btn btn-outline-danger btn-sm" (click)="salir()">
+          <i class="bi bi-box-arrow-right me-1"></i> Cerrar Sesión
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

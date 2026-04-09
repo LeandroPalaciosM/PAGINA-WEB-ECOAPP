@@ -1,0 +1,23 @@
+/**
+ * Autora: Gabriela Solange Gonzalez Roman
+ * Fecha: 2025-12-01
+ * Descripción: CSS de Noticiaciones de éxito y error reutilizables.
+ */
+ .toast-container {
+  animation: slideIn 0.3s ease-in-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.toast {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}

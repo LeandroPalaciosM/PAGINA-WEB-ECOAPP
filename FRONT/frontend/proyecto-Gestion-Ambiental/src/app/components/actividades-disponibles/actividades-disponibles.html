@@ -1,0 +1,98 @@
+<!--Dominica Torres-->
+<div class="container p-4">
+
+  <div class="text-center mb-5">
+    <h2 class="fw-bold text-dark display-6">
+      <i class="bi bi-calendar-check me-2 text-success"></i>{{ titulo }}
+    </h2>
+    <p class="text-muted fs-5">Explora, inscríbete y ayuda al planeta.</p>
+  </div>
+
+  <div class="row mb-5 justify-content-center">
+    <div class="col-md-8 col-lg-6">
+      <div class="input-group shadow-sm rounded-pill overflow-hidden bg-white border">
+        <span class="input-group-text bg-white border-0 ps-4">
+          <i class="bi bi-search text-success"></i>
+        </span>
+        <input type="text" 
+               class="form-control border-0 py-3" 
+               placeholder="Buscar por nombre, lugar o descripción..." 
+               #searchBox (keyup)="searchActividades(searchBox.value)">
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="loading" class="text-center my-5">
+    <div class="spinner-border text-success" style="width: 3rem; height: 3rem;" role="status"></div>
+    <p class="mt-2 text-muted">Buscando actividades...</p>
+  </div>
+
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4" *ngIf="!loading">
+
+    <div class="col" *ngFor="let act of actividades">
+      <div class="card h-100 shadow-sm border border-light-subtle rounded-4 hover-effect">
+        
+        <div class="card-header bg-transparent border-0 pt-4 px-4 d-flex justify-content-between align-items-center">
+          <span class="badge rounded-pill px-3 py-2" 
+                [ngClass]="act.estado === 'Abierta' ? 'bg-success' : 'bg-primary'">
+            {{ act.estado }}
+          </span>
+          <small class="text-muted fw-bold">
+            <i class="bi bi-people-fill me-1"></i> {{ act.cupo_maximo }} cupos
+          </small>
+        </div>
+
+        <div class="card-body px-4 pb-4 d-flex flex-column">
+          <h5 class="card-title fw-bold text-dark mb-3">{{ act.nombre }}</h5>
+
+          <div class="mb-2 text-muted small">
+            <i class="bi bi-calendar-event me-2 text-success"></i>
+            {{ act.fecha | date:'longDate' }}
+          </div>
+
+          <div class="mb-3 text-muted small">
+            <i class="bi bi-geo-alt-fill me-2 text-danger"></i>
+            {{ act.lugar }}
+          </div>
+
+          <p class="card-text text-secondary flex-grow-1">
+            {{ act.descripcion }}
+          </p>
+
+          <button *ngIf="userRole === 'Administrador' || userRole === 'Coordinador'"
+                  class="btn btn-warning w-100 mt-3 fw-bold py-2 rounded-3 text-dark"
+                  (click)="irAGestion()">
+            <i class="bi bi-gear-fill me-2"></i>
+            Gestionar Actividad
+          </button>
+
+          <button *ngIf="userRole !== 'Administrador' && userRole !== 'Coordinador'"
+                  class="btn w-100 mt-3 fw-bold py-2 rounded-3"
+                  [ngClass]="estaLogueado ? 'btn-outline-success' : 'btn-outline-primary'"
+                  (click)="inscribirse(act)">
+            
+            <i class="bi" [ngClass]="estaLogueado ? 'bi-person-plus-fill' : 'bi-box-arrow-in-right'"></i>
+            
+            {{ estaLogueado ? 'Inscribirme Ahora' : 'Inicia sesión para unirte' }}
+          </button>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div *ngIf="!loading && actividades.length === 0" 
+       class="alert alert-light text-center p-5 shadow-sm rounded-4">
+    <div class="mb-3">
+      <i class="bi bi-search display-4 text-muted"></i>
+    </div>
+    <h4 class="fw-bold text-secondary">No encontramos actividades</h4>
+    <p class="text-muted">Intenta ajustar tu búsqueda.</p>
+    <button class="btn btn-link text-success fw-bold" 
+            (click)="searchBox.value = ''; searchActividades('')">
+      Ver todo el catálogo
+    </button>
+  </div>
+
+</div>

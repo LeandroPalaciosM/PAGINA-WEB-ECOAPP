@@ -1,0 +1,26 @@
+
+/**Autor:Gabriela Gonzalez
+  */
+  html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+table.table thead.thead-green > tr > th {
+  background-color: #2c5d2f !important; 
+  color: white !important;              
+  font-weight: bold;
+  font-weight: bold;
+  text-align: center; 
+  vertical-align: middle;
+}
+.error {
+  color: red;
+  font-size: 13px;
+  margin-top: 3px;
+  display: block;
+}
+body, html {
+  font-family: 'Poppins', sans-serif !important;
+}
+
+
+
+

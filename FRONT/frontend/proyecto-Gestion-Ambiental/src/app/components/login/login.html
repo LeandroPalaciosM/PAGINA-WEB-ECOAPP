@@ -1,0 +1,59 @@
+<!--Autor: Leandro PAlacios-->
+<div class="login-container d-flex align-items-center justify-content-center vh-100 bg-light">
+  <div class="card shadow-lg border-0" style="width: 25rem; border-radius: 15px;">
+    
+    <div class="card-header bg-success text-white text-center py-4" style="border-radius: 15px 15px 0 0;">
+      <i class="bi bi-leaf-fill fs-1"></i>
+      <h2 class="mt-2 fw-bold">Eco App</h2>
+      <small>Gestión Ambiental Universitaria</small>
+    </div>
+
+    <div class="card-body p-4">
+      
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+          <label class="form-label fw-bold text-secondary">Correo Electrónico</label>
+          <div class="input-group">
+            <span class="input-group-text bg-white border-end-0">
+              <i class="bi bi-envelope text-success"></i>
+            </span>
+            <input type="email" class="form-control border-start-0" formControlName="correo" 
+                   placeholder="nombre@ug.edu.ec" (input)="error = null">
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <label class="form-label fw-bold text-secondary">Contraseña</label>
+          <div class="input-group">
+            <span class="input-group-text bg-white border-end-0">
+              <i class="bi bi-lock text-success"></i>
+            </span>
+            <input type="password" class="form-control border-start-0" formControlName="contrasena" 
+                   placeholder="********" (input)="error = null">
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-success w-100 py-2 fw-bold shadow-sm" [disabled]="form.invalid">
+          Ingresar al Sistema
+        </button>
+
+        @if (error) {
+          <div class="alert alert-danger mt-3 py-2 text-center" style="font-size: 0.85rem;">
+            <i class="bi bi-exclamation-triangle-fill me-2"></i> {{ error }}
+          </div>
+        }
+      </form>
+
+      <div class="mt-4 text-center border-top pt-3">
+        <p class="text-muted mb-1">¿Eres nuevo en el sistema?</p>
+        <a routerLink="/registro" class="text-success fw-bold text-decoration-none">
+          <i class="bi bi-person-plus me-1"></i>Regístrate como Voluntario
+        </a>
+      </div>
+    </div>
+
+    <div class="card-footer bg-white text-center border-0 pb-4">
+      <small class="text-muted">Ingeniería de Software - 2026</small>
+    </div>
+  </div>
+</div>

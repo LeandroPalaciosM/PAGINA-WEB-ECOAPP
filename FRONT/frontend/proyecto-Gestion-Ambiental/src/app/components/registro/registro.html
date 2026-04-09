@@ -1,0 +1,71 @@
+<!--AutorLeandro PAlacios-->
+
+<div class="registro-container d-flex align-items-center justify-content-center vh-100 bg-light">
+  <div class="card shadow-lg border-0" style="width: 30rem; border-radius: 15px;">
+    
+    <div class="card-header bg-success text-white text-center py-3" style="border-radius: 15px 15px 0 0;">
+      <i class="bi bi-person-plus-fill fs-1"></i>
+      <h2 class="mt-2 fw-bold">Únete a Eco App</h2>
+      <p class="mb-0">Crea tu cuenta de Voluntario</p>
+    </div>
+
+    <div class="card-body p-4">
+      <form [formGroup]="formRegistro" (ngSubmit)="onSubmit()">
+        
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label class="form-label fw-bold text-secondary">Nombre</label>
+            <input type="text" class="form-control" formControlName="nombre" placeholder="Ej: Leandro">
+            @if (formRegistro.get('nombre')?.invalid && formRegistro.get('nombre')?.touched) {
+              <small class="text-danger">Solo letras.</small>
+            }
+          </div>
+
+          <div class="col-md-6 mb-3">
+            <label class="form-label fw-bold text-secondary">Apellido</label>
+            <input type="text" class="form-control" formControlName="apellido" placeholder="Ej: Palacios">
+            @if (formRegistro.get('apellido')?.invalid && formRegistro.get('apellido')?.touched) {
+              <small class="text-danger">Solo letras.</small>
+            }
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label fw-bold text-secondary">Correo Electrónico</label>
+          <div class="input-group">
+            <span class="input-group-text bg-white border-end-0"><i class="bi bi-envelope text-success"></i></span>
+            <input type="email" class="form-control border-start-0" formControlName="correo" placeholder="usuario@ug.edu.ec">
+          </div>
+          @if (formRegistro.get('correo')?.invalid && formRegistro.get('correo')?.touched) {
+            <small class="text-danger">Email inválido.</small>
+          }
+        </div>
+
+        <div class="mb-4">
+          <label class="form-label fw-bold text-secondary">Contraseña</label>
+          <div class="input-group">
+            <span class="input-group-text bg-white border-end-0"><i class="bi bi-lock text-success"></i></span>
+            <input type="password" class="form-control border-start-0" formControlName="contrasena" placeholder="Mínimo 6 caracteres">
+          </div>
+          @if (formRegistro.get('contrasena')?.invalid && formRegistro.get('contrasena')?.touched) {
+            <small class="text-danger">Debe tener al menos 6 caracteres.</small>
+          }
+        </div>
+
+        <button type="submit" class="btn btn-success w-100 py-2 fw-bold shadow-sm" [disabled]="formRegistro.invalid || cargando">
+          @if (cargando) {
+            <span class="spinner-border spinner-border-sm me-2"></span> Procesando...
+          } @else {
+            <i class="bi bi-check-circle me-1"></i> Finalizar Registro
+          }
+        </button>
+
+      </form>
+    </div>
+
+    <div class="card-footer bg-white text-center border-0 pb-4">
+      <p class="mb-0 text-muted">¿Ya tienes una cuenta?</p>
+      <a routerLink="/login" class="text-success fw-bold text-decoration-none">Inicia sesión aquí</a>
+    </div>
+  </div>
+</div>

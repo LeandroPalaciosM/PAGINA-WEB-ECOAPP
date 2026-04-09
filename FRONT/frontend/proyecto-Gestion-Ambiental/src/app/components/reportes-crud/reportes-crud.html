@@ -1,0 +1,167 @@
+<div class="container p-4">
+
+  <app-section-header 
+    title="Gestión de Reportes" 
+    subtitle="Administra los avances y resultados de las actividades.
+    Si no ves reportes, es porque aún no se han registrado avances en las actividades que gestionas. 
+    Haz clic en 'Nuevo Reporte' para registrar el progreso de una actividad y compartir los logros alcanzados."
+    icon="bi bi-file-earmark-text">
+  </app-section-header>
+
+  <div class="container mt-4">
+    <div *ngIf="rol === 'Administrador' || rol === 'Coordinador'">
+        
+      <div class="d-flex justify-content-between align-items-center mb-3">
+      <h2 class="fw-bold text-secondary">Listado de Reportes</h2>
+        <button class="btn btn-success" (click)="newReporte()">
+            <i class="bi bi-plus-lg me-1"></i> Nuevo Reporte
+        </button>
+        </div>
+
+        <div class="toast-container position-fixed top-0 end-0 p-3">
+        <div #toastElement class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+            <div class="toast-body">
+                {{ toastMessage }}
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+        </div>
+
+        <div class="input-group mb-3">
+        <input type="text"
+                class="form-control"  
+                placeholder="Buscar por descripción..."
+                [(ngModel)]="searchTerm"
+                (input)="onSearch()" />
+        </div>
+
+        <app-generic-table
+        [data]="reportes"
+        [columns]="columns"
+        (viewInfo)="mostrarInfo($event)"
+        (edit)="openEditReporte($event)"
+        (delete)="deleteReporte($event)"
+        (download)="generarPDF($event)"
+        [showDownload]="rol === 'Administrador'">
+        
+        </app-generic-table>
+    </div>
+
+    <div *ngIf="rol !== 'Administrador' && rol !== 'Coordinador'" class="alert alert-warning mt-3">
+      No tienes permisos para acceder a los reportes.
+    </div>
+
+  </div>
+
+  <div *ngIf="selectedReporteInfo" class="overlay">
+    <div class="overlay-content">
+      <app-info-card
+        [titulo]="'Reporte #' + selectedReporteInfo.id_reporte"
+        [descripcion]="selectedReporteInfo.descripcion"
+        [etiqueta]="selectedReporteInfo.aprobado ? 'Aprobado' : 'Pendiente'"
+        [imagenUrl]="selectedReporteInfo.evidenciaUrl"
+        textoBoton="Cerrar"
+        (accionBoton)="selectedReporteInfo = null">
+        
+        <div class="mt-3 d-grid" *ngIf="rol === 'Administrador'">
+          <button class="btn btn-outline-danger" (click)="generarPDF(selectedReporteInfo)">
+            <i class="bi bi-file-earmark-pdf me-2"></i> Descargar Reporte PDF
+          </button>
+        </div>
+      </app-info-card>
+    </div>
+  </div>
+
+  
+  <div *ngIf="showDialog" class="overlay">
+    <div class="dialog">
+      <h5 class="mb-3 text-danger">Eliminar Reporte</h5>
+      <p>
+        ¿Seguro que deseas eliminar este reporte?
+      </p>
+      <div class="d-flex justify-content-end gap-2 mt-3">
+        <button class="btn btn-secondary" (click)="cancelarDelete()">Cancelar</button>
+        <button class="btn btn-danger" (click)="confirmarDelete()">Eliminar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="reporteModal" tabindex="-1" #movieModalRef>
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title">
+          {{ selectedReporte?.id_reporte ? 'Editar Reporte' : 'Nuevo Reporte' }}
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <form [formGroup]="formReporte">
+        <div class="modal-body">
+
+          <div class="mb-3">
+            <label for="id_actividad" class="form-label">Actividad Vinculada</label>
+            <select id="id_actividad" class="form-select" formControlName="id_actividad">
+              <option value="">Seleccione una actividad...</option>
+              <option *ngFor="let act of actividad" [value]="act.id_actividad">
+                {{ act.nombre }}
+              </option>
+            </select>
+            <div *ngIf="formReporte.get('id_actividad')?.invalid && formReporte.get('id_actividad')?.touched" class="text-danger small">
+              Debe seleccionar una actividad para vincular el reporte.
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Descripción del Avance</label>
+            <textarea class="form-control" formControlName="descripcion" rows="3" placeholder="Describe los logros alcanzados..."></textarea>
+            <div *ngIf="formReporte.get('descripcion')?.invalid && formReporte.get('descripcion')?.touched" class="text-danger small">
+              La descripción debe tener al menos 5 caracteres.
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Fecha del Reporte</label>
+              <input type="date" class="form-control" formControlName="fecha" />
+              <div *ngIf="formReporte.get('fecha')?.invalid && formReporte.get('fecha')?.touched" class="text-danger small">
+                La fecha es requerida.
+              </div>
+            </div>
+
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Observaciones / Resultados Cuantitativos</label>
+              <input type="text" class="form-control" formControlName="observaciones" placeholder="Ej: 50 árboles plantados, 10 voluntarios asistieron" />
+              <div *ngIf="formReporte.get('observaciones')?.invalid && formReporte.get('observaciones')?.touched" class="text-danger small">
+                Indique los resultados finales.
+              </div>
+            </div>
+          </div>
+
+          <div class="card bg-light mb-3" *ngIf="rol === 'Administrador'">
+            <div class="card-body py-2">
+              <div class="form-check form-switch">
+                <input type="checkbox" class="form-check-input" id="aprobado" formControlName="aprobado" />
+                <label class="form-check-label fw-bold" for="aprobado">Validar y Aprobar Reporte</label>
+              </div>
+              <small class="text-muted">Como administrador, al marcar esto confirmas que la evidencia es válida.</small>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="modal-footer">
+          <button class="btn btn-outline-secondary" type="button" data-bs-dismiss="modal">Cerrar</button>
+          <button class="btn btn-success px-4" type="button" (click)="saveReporte()" [disabled]="formReporte.invalid">
+            <i class="bi bi-save me-1"></i>
+            {{ selectedReporte?.id_reporte ? 'Guardar Cambios' : 'Registrar Reporte' }}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

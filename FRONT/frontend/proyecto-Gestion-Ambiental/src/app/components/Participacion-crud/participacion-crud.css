@@ -1,0 +1,32 @@
+
+.thead-green tr th {
+    background-color: #376931 !important;
+    color: white;
+    font-weight: normal; 
+}
+
+
+.btn-custom-green {
+    background-color: #234f1e;
+    border-color: #234f1e;
+    color: white;
+}
+.btn-custom-green:hover {
+    background-color: #32632b !important;
+    border-color: #1b3a16;
+    color: white;
+}
+
+.btn-outline-custom-green {
+    color: #376931;
+    border-color: #1c3719;
+    background-color: transparent;
+}
+.btn-outline-custom-green:hover {
+    background-color: #234f1e;
+    color: white;
+}
+
+.text-custom-green {
+    color: #234f1e !important;
+}

@@ -1,0 +1,117 @@
+<!--Autora: Gabriela Gonzalez-->
+<div class="container p-4">
+  
+  <app-section-header 
+    title="Mis Inscripciones" 
+    subtitle="Revisa el estado de tus solicitudes y actividades."
+    icon="bi bi-check-circle-fill">
+  </app-section-header>
+
+  @if (estaLogueado) {
+    <div class="container mt-4">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="fw-bold text-secondary">Inscripciones registradas</h2>
+         <button class="btn btn-outline-success" routerLink="/actividades-disponibles">
+           <i class="bi bi-search"></i> Buscar Más Actividades
+         </button>
+      </div>
+
+      <div class="row">
+        @for(item of participaciones; track $index) {
+           <div class="col-md-4 mb-4">
+             <div class="card shadow-sm h-100 border-0">
+               <div class="card-header fw-bold text-white d-flex justify-content-between align-items-center" 
+                    [ngClass]="{
+                      'bg-warning': item.estado === 'Pendiente',
+                      'bg-success': item.estado === 'Confirmado' || item.estado === 'Asistió',
+                      'bg-danger': item.estado === 'Cancelado'
+                    }">
+                 <span>{{ item.estado }}</span>
+                 <i class="bi" [ngClass]="{
+                   'bi-hourglass-split': item.estado === 'Pendiente',
+                   'bi-check-circle-fill': item.estado === 'Confirmado',
+                   'bi-person-check-fill': item.estado === 'Asistió',
+                   'bi-x-circle': item.estado === 'Cancelado'
+                 }"></i>
+               </div>
+               
+               <div class="card-body">
+                 <h5 class="card-title text-dark fw-bold mb-3">
+                   {{ item.id_actividadNavigation?.nombre || 'Actividad #' + item.id_actividad }}
+                 </h5>
+                 
+                 <p class="card-text text-muted mb-1">
+                   <i class="bi bi-geo-alt-fill text-danger me-2"></i> 
+                   {{ item.id_actividadNavigation?.lugar || 'Lugar por definir' }}
+                 </p>
+                 <p class="card-text text-muted mb-1">
+                   <i class="bi bi-calendar-event me-2"></i>
+                   {{ item.fecha_inscripcion | date:'longDate' }}
+                 </p>
+                 <p class="mb-3">
+                   <strong>Mi Rol:</strong> <span class="badge bg-light text-dark border">{{ item.rol_en_actividad }}</span>
+                 </p>
+                 
+                 <hr>
+                 
+                 @if(item.estado === 'Pendiente' || item.estado === 'Confirmado') {
+                   <button class="btn btn-outline-danger w-100" (click)="cancelarInscripcion(item)">
+                     <i class="bi bi-x-circle me-1"></i> Cancelar Inscripción
+                   </button>
+                 }
+               </div>
+             </div>
+           </div>
+        } @empty {
+          <div class="col-12">
+            <div class="alert alert-light border text-center p-5 shadow-sm">
+              <div class="mb-3">
+                 <i class="bi bi-folder-x text-muted fs-1"></i>
+              </div>
+              <h4 class="fw-bold text-secondary">No tienes inscripciones activas</h4>
+              <p class="mb-4 text-muted">¡Únete a una iniciativa para ayudar al planeta!</p>
+              <a routerLink="/inicio" class="btn btn-success px-4 py-2 fw-bold">Ir al Inicio</a>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  } 
+  
+  @else {
+    <div class="container mt-5">
+      <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+          <div class="card border-0 shadow-lg text-center p-5">
+            <div class="mb-4">
+              <div class="bg-light rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 100px; height: 100px;">
+                <i class="bi bi-lock-fill text-secondary display-4"></i>
+              </div>
+            </div>
+            
+            <h2 class="fw-bold text-dark mb-3">Inicia sesión para ver tus inscripciones</h2>
+            <p class="text-muted fs-5 mb-4">
+              Necesitas identificarte para gestionar tus actividades y ver el estado de tus solicitudes de voluntariado.
+            </p>
+            
+            <div class="d-grid gap-2 col-md-8 mx-auto">
+              <button routerLink="/login" class="btn btn-primary btn-lg shadow-sm">
+                <i class="bi bi-box-arrow-in-right me-2"></i> Iniciar Sesión
+              </button>
+              <button routerLink="/inicio" class="btn btn-outline-secondary">
+                Volver al Inicio
+              </button>
+            </div>
+            
+            <p class="mt-4 text-muted small">
+              ¿No tienes cuenta? <a routerLink="/registro" class="text-primary fw-bold text-decoration-none">Regístrate aquí</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+
+</div>
+
+<app-feedback #feedbackRef></app-feedback>

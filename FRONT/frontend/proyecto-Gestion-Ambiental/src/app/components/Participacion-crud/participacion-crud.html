@@ -1,0 +1,241 @@
+<div class="container p-4">
+
+  <app-section-header 
+    title="Control de Asistencia" 
+    subtitle="Gestiona las inscripciones y valida la asistencia a los eventos."
+    icon="bi bi-people-fill">
+  </app-section-header>
+
+  <div class="container mt-4">
+    
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h2 class="fw-bold text-secondary">Listado de Participaciones</h2>
+      <button class="btn btn-custom-green" (click)="openNew()">
+        <i class="bi bi-plus-lg me-1"></i> Nueva Inscripción
+      </button>
+    </div>
+
+    <input type="text" class="form-control mb-3" placeholder="Buscar por Rol, Estado u Observación..." #busq (keyup)="search(busq)">
+
+    <table class="table table-striped table-bordered table-hover mi-striped ">
+      <thead class="thead-green">
+        <tr class="fw-bold">
+          <th class="fw-bold py-3">ID</th>
+          <th class="fw-bold py-3">Usuario</th>
+          <th class="fw-bold py-3">Actividad</th>
+          <th class="fw-bold py-3">Rol</th>
+          <th class="fw-bold py-3">Fecha</th>
+          <th class="fw-bold py-3">Estado</th>
+          <th class="fw-bold py-3">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for(item of participaciones; track $index){
+          <tr>
+            <td>{{item.id_participacion}}</td>
+            
+            <td>
+              <div class="fw-bold">{{ item.id_userNavigation?.nombre }} {{ item.id_userNavigation?.apellido }}</div>
+              <small class="text-muted">{{ item.id_userNavigation?.correo }}</small>
+            </td>
+            
+            <td>
+              <div class="fw-bold">{{ item.id_actividadNavigation?.nombre }}</div>
+              <small class="text-muted">{{ item.id_actividadNavigation?.lugar }}</small>
+            </td>
+            
+            <td>{{item.rol_en_actividad}}</td>
+            <td>{{item.fecha_inscripcion | date:'dd/MM/yyyy'}}</td>
+            
+            <td class="text-center">
+              @if(item.estado === 'Confirmado'){
+                <span class="badge bg-success bg-opacity-10 text-success rounded-pill px-3">Confirmado</span>
+              } @else if(item.estado === 'Pendiente') {
+                <span class="badge bg-warning bg-opacity-10 text-warning rounded-pill px-3">Pendiente</span>
+              } @else if(item.estado === 'Asistió') {
+                <span class="badge bg-primary bg-opacity-10 text-primary rounded-pill px-3">Asistió</span>
+              } @else {
+                <span class="badge bg-secondary bg-opacity-10 text-secondary rounded-pill px-3">{{item.estado}}</span>
+              }
+            </td>
+
+            <td class="text-center">
+               <button class="btn btn-success btn-sm me-1" 
+                       title="Aceptar Voluntario"
+                       *ngIf="item.estado === 'Pendiente'"
+                       (click)="cambiarEstado(item, 'Confirmado')">
+                 <i class="bi bi-check-lg"></i>
+               </button>
+
+               <button class="btn btn-primary btn-sm me-1" 
+                       title="Marcar Asistencia"
+                       *ngIf="item.estado === 'Confirmado'"
+                       (click)="cambiarEstado(item, 'Asistió')">
+                 <i class="bi bi-person-check"></i>
+               </button>
+               
+               @if(rolUsuario === 'Administrador') {
+                 <button class="btn btn-info btn-sm me-1" (click)="openInfo(item)"><i class="bi bi-eye"></i></button>
+               }
+               <button class="btn btn-secondary btn-sm me-1" (click)="openEdit(item)"><i class="bi bi-pen"></i></button>
+               
+               @if(rolUsuario === 'Administrador') {
+                 <button class="btn btn-danger btn-sm" (click)="delete(item)"><i class="bi bi-trash3"></i></button>
+               }
+            </td>
+          </tr>
+        } @empty {
+          <tr>
+            <td colspan="7" class="text-center p-4">No hay registros coincidentes.</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="modal fade" id="participacionModal" tabindex="-1" #participacionModalRef>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">
+          {{ editingId ? 'Editar Participación' : 'Nueva Inscripción Manual' }}
+        </h5>
+        <button type="button" class="btn-close" (click)="modalRef.hide()"></button>
+      </div>
+
+      <form [formGroup]="formParticipacion">
+        <div class="modal-body">
+          
+          <div class="mb-3">
+             <label class="form-label">ID Usuario (Voluntario)</label>
+             <input type="number" class="form-control" formControlName="id_user" placeholder="ID del usuario a inscribir">
+             <span class="text-danger small" *ngIf="formParticipacion.get('id_user')?.hasError('noExiste')">
+                Usuario no encontrado.
+             </span>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">ID Actividad</label>
+            <input type="number" class="form-control" formControlName="id_actividad" placeholder="Ej: 5" 
+                   [class.is-invalid]="formParticipacion.get('id_actividad')?.invalid && formParticipacion.get('id_actividad')?.touched"/>
+            <span class="text-danger small" *ngIf="formParticipacion.get('id_actividad')?.hasError('noExiste')">
+               Actividad no registrada.
+            </span>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Rol en Actividad</label>
+            <select class="form-select" formControlName="rol_en_actividad">
+              <option value="" disabled selected>Selecciona un rol...</option>
+              <option value="Participante">Participante</option>
+              <option value="Voluntario">Voluntario</option>
+              <option value="Coordinador">Coordinador</option>
+              <option value="Expositor">Expositor</option>
+              <option value="Logística">Logística</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Fecha de Inscripción</label>
+            <input type="date" class="form-control" formControlName="fecha_inscripcion" />
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label d-block">Estado</label>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" formControlName="estado" id="estadoPendiente" value="Pendiente">
+              <label class="form-check-label" for="estadoPendiente">Pendiente</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" formControlName="estado" id="estadoConfirmado" value="Confirmado">
+              <label class="form-check-label text-success fw-bold" for="estadoConfirmado">Confirmado</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" formControlName="estado" id="estadoCancelado" value="Cancelado">
+              <label class="form-check-label text-danger" for="estadoCancelado">Cancelado</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" formControlName="estado" id="estadoAsistio" value="Asistió">
+              <label class="form-check-label text-primary" for="estadoAsistio">Asistió</label>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Observaciones</label>
+            <textarea class="form-control" formControlName="observaciones" rows="2"></textarea>
+          </div>
+
+        </div>
+
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" (click)="modalRef.hide()">Cancelar</button>
+          <button class="btn btn-primary" type="button" (click)="save()">
+            {{ editingId ? 'Actualizar' : 'Guardar' }}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" tabindex="-1" #infoModalHTML>
+  <div class="modal-dialog modal-lg"> 
+    <div class="modal-content">
+      
+      <div class="modal-header text-white" 
+           [ngClass]="{
+             'bg-success': selectedItem?.estado === 'Confirmado',
+             'bg-warning': selectedItem?.estado === 'Pendiente',
+             'bg-primary': selectedItem?.estado === 'Asistió',
+             'bg-danger': selectedItem?.estado === 'Cancelado',
+             'bg-secondary': !selectedItem?.estado
+           }">
+        <h5 class="modal-title">
+          <i class="bi bi-info-circle-fill me-2"></i>
+          Detalle de Inscripción #{{ selectedItem?.id_participacion }}
+        </h5>
+        <button type="button" class="btn-close btn-close-white" (click)="infoModalRef.hide()"></button>
+      </div>
+
+      <div class="modal-body" *ngIf="selectedItem">
+        <div class="row">
+          <div class="col-md-6 border-end">
+            <h6 class="text-muted fw-bold mb-3">INFORMACIÓN DEL VOLUNTARIO</h6>
+            <p class="fw-bold fs-5">
+              {{ selectedItem.id_userNavigation?.nombre }} {{ selectedItem.id_userNavigation?.apellido }}
+            </p>
+            <p class="text-muted">{{ selectedItem.id_userNavigation?.correo }}</p>
+            <div class="alert alert-light border mt-3">
+              <small class="d-block text-muted">Rol asignado:</small>
+              <strong class="text-primary">{{ selectedItem.rol_en_actividad }}</strong>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <h6 class="text-muted fw-bold mb-3">DETALLES DEL EVENTO</h6>
+            <p class="fw-bold text-success">{{ selectedItem.id_actividadNavigation?.nombre }}</p>
+            <p><i class="bi bi-geo-alt-fill text-danger"></i> {{ selectedItem.id_actividadNavigation?.lugar }}</p>
+            <p><strong>Fecha Inscripción:</strong> {{ selectedItem.fecha_inscripcion | date:'fullDate' }}</p>
+          </div>
+        </div>
+
+        <hr>
+        <div class="row mt-3">
+          <div class="col-12">
+            <h6 class="text-muted fw-bold">Observaciones:</h6>
+            <div class="p-3 bg-light rounded border">
+              {{ selectedItem.observaciones || 'Sin observaciones.' }}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="infoModalRef.hide()">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-feedback #feedbackRef></app-feedback>

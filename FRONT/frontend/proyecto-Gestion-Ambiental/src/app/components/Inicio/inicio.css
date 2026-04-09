@@ -1,0 +1,60 @@
+/**Autora: Gabriela Gonzalez**/
+.text-custom-dark {
+    color: #1e331c;
+}
+
+.text-custom-green {
+    color: #28a745; 
+}
+
+.btn-custom-green {
+    background-color: #1e331c;
+    color: white;
+    border: none;
+    transition: all 0.3s;
+}
+
+.btn-custom-green:hover {
+    background-color: #2b4628;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+
+.card-hover {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 15px; 
+    overflow: hidden; 
+}
+
+.card-hover:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+}
+
+.card-header-image {
+    height: 140px;
+    width: 100%;
+}
+
+.bg-gradient-green {
+    background: linear-gradient(135deg, #2ecc71, #27ae60);
+}
+
+.bg-gradient-blue {
+    background: linear-gradient(135deg, #3498db, #2980b9);
+}
+
+.bg-gradient-purple {
+    background: linear-gradient(135deg, #9b59b6, #8e44ad);
+}
+
+.bg-gradient-orange {
+    background: linear-gradient(135deg, #f1c40f, #f39c12);
+}
+
+.text-truncate-3 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}

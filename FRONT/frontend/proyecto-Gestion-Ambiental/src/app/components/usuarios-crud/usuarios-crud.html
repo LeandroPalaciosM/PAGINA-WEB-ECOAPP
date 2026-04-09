@@ -1,0 +1,115 @@
+<div class="container mt-4">
+    <app-section-header 
+        title="Gestión de Usuarios" 
+        subtitle="Administra los integrantes del sistema y sus roles de acceso."
+        icon="bi-person-badge">
+    </app-section-header>
+
+    <app-feedback #feedback></app-feedback>
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h2 class="fw-bold text-secondary">Usuarios Registrados</h2>
+        <button class="btn btn-success" (click)="openNew()">
+            <i class="bi bi-plus-lg me-1"></i> Nuevo Usuario
+        </button>
+    </div>
+
+    <input type="text" class="form-control mb-3" placeholder="Buscar usuario por nombre o apellido..." #busq (keyup)="search(busq)">
+
+    <app-generic-table
+        [columns]="columns"
+        [data]="usuarios"
+        (edit)="openEdit($event)"
+        (delete)="eliminarUsuario($event)"
+        (viewInfo)="openInfo($event)"> 
+    </app-generic-table>
+
+    <div class="modal fade" id="usuarioModal" tabindex="-1" #usuarioModalRef>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        {{ editingId ? 'Editar Usuario' : 'Nuevo Usuario' }}
+                    </h5>
+                    <button type="button" class="btn-close" (click)="modalRef.hide()"></button>
+                </div>
+
+                <form [formGroup]="formUsuario" (ngSubmit)="save()">
+                    <div class="modal-body">
+
+                        <div class="mb-3">
+                            <label class="form-label">Nombre</label>
+                            <input type="text" class="form-control" formControlName="nombre" />
+                            <div class="text-danger mt-1" *ngIf="formUsuario.get('nombre')?.invalid && (formUsuario.get('nombre')?.dirty || formUsuario.get('nombre')?.touched)">
+                                <small *ngIf="formUsuario.get('nombre')?.errors?.['required']">El nombre es obligatorio.</small>
+                                <small *ngIf="formUsuario.get('nombre')?.errors?.['minlength']">Debe tener al menos 6 caracteres.</small>
+                                <small *ngIf="formUsuario.get('nombre')?.errors?.['pattern']">Solo se permiten letras.</small>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Apellido</label>
+                            <input type="text" class="form-control" formControlName="apellido" />
+                            <div class="text-danger mt-1" *ngIf="formUsuario.get('apellido')?.invalid && (formUsuario.get('apellido')?.dirty || formUsuario.get('apellido')?.touched)">
+                                <small *ngIf="formUsuario.get('apellido')?.errors?.['required']">El apellido es obligatorio.</small>
+                                <small *ngIf="formUsuario.get('apellido')?.errors?.['minlength']">Debe tener al menos 6 caracteres.</small>
+                                <small *ngIf="formUsuario.get('apellido')?.errors?.['pattern']">Solo se permiten letras.</small>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Correo Electrónico</label>
+                            <input type="email" class="form-control" formControlName="correo" />
+                            <div class="text-danger mt-1" *ngIf="formUsuario.get('correo')?.invalid && (formUsuario.get('correo')?.dirty || formUsuario.get('correo')?.touched)">
+                                <small *ngIf="formUsuario.get('correo')?.errors?.['required']">El correo es obligatorio.</small>
+                                <small *ngIf="formUsuario.get('correo')?.errors?.['email']">Ingrese un correo válido.</small>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Contraseña</label>
+                            <input type="text" class="form-control" formControlName="contrasena" />
+                            <div class="text-danger mt-1" *ngIf="formUsuario.get('contrasena')?.invalid && (formUsuario.get('contrasena')?.dirty || formUsuario.get('contrasena')?.touched)">
+                                <small *ngIf="formUsuario.get('contrasena')?.errors?.['required']">La contraseña es obligatoria.</small>
+                                <small *ngIf="formUsuario.get('contrasena')?.errors?.['minlength']">Mínimo 6 caracteres.</small>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Rol del Usuario</label>
+                            <select class="form-select" formControlName="rol">
+                                <option value="" disabled selected>Seleccione un rol...</option>
+                                <option *ngFor="let r of roles" [value]="r">{{ r }}</option> 
+                            </select>
+                            <div class="text-danger mt-1" *ngIf="formUsuario.get('rol')?.invalid && (formUsuario.get('rol')?.dirty || formUsuario.get('rol')?.touched)">
+                                <small>Debe elegir un rol para el usuario.</small>
+                            </div>
+                        </div>
+
+                        <div class="mb-3 form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="estadoSwitch" formControlName="estado">
+                            <label class="form-check-label" for="estadoSwitch">Usuario Activo</label>
+                        </div>
+
+                    </div>
+                    
+                    <div class="modal-footer"> 
+                        <button class="btn btn-danger" type="button" (click)="modalRef.hide()"> Cancelar </button> 
+                        <button type="submit" class="btn btn-success" [disabled]="formUsuario.invalid">
+                            {{ editingId ? 'Actualizar' : 'Guardar' }}
+                        </button>
+                    </div>
+                </form> 
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-dialog
+    [visible]="dialogVisible"
+    [title]="dialogTitle"
+    [data]="dialogData"
+    (confirm)="dialogVisible = false"
+    (cancel)="dialogVisible = false">
+</app-dialog>
+

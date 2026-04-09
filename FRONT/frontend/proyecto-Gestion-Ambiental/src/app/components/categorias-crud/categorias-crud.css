@@ -1,0 +1,64 @@
+
+/*steven Iñiga*/
+.container {
+  max-width: 1200px;
+}
+
+.btn-success {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+
+.table {
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.table th {
+  background-color: #f8f9fa;
+  font-weight: 600;
+}
+
+
+.modal-content {
+  border-radius: 10px;
+}
+
+.modal-header {
+  background-color: #f1f3f5;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.modal-title {
+  font-weight: 600;
+}
+
+.form-control,
+.form-select,
+textarea {
+  border-radius: 6px;
+}
+
+.form-control:focus,
+.form-select:focus {
+  box-shadow: 0 0 0 0.2rem rgba(25, 135, 84, 0.25);
+  border-color: #198754;
+}
+
+.form-check-input:checked {
+  background-color: #334f31;
+  border-color: #46814c;
+}
+
+.modal-footer {
+  border-top: 1px solid #dee2e6;
+}
+
+@media (max-width: 768px) {
+  .modal-dialog {
+    margin: 1rem;
+  }
+}

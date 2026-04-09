@@ -1,0 +1,122 @@
+<!--Autora: Gabriela Gonzalez-->
+<div class="container p-4">
+
+  <div class="mb-5 text-center">
+    <h2 class="fw-bold text-custom-dark display-6">
+      <i class="bi bi-globe-americas text-success me-2"></i>Iniciativas Ambientales
+    </h2>
+    <p class="text-muted fs-5">Descubre los proyectos activos y únete al cambio.</p>
+  </div>
+
+  <div class="row mb-5 justify-content-center">
+    <div class="col-lg-8">
+      <div class="card shadow-sm border-0 p-2">
+        <div class="row g-2 align-items-center">
+          
+          <div class="col-md-8">
+            <div class="input-group">
+              <span class="input-group-text bg-white border-0 ps-3">
+                <i class="bi bi-search text-muted"></i>
+              </span>
+              <input type="text" 
+                     class="form-control border-0 shadow-none" 
+                     placeholder="¿Qué iniciativa buscas hoy?" 
+                     #searchBox (keyup)="search(searchBox.value)">
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <select class="form-select border-0 bg-light fw-bold text-secondary text-center" 
+                    style="border-radius: 10px;"
+                    (change)="filtrarCategoria($event)"> <option value="todas" selected>Todas las categorías</option>
+              
+              @for (cat of categorias; track cat.id_categoria) {
+                <option [value]="cat.id_categoria">
+                  {{ cat.nombre }}
+                </option>
+              }
+              
+            </select>
+          </div>
+ 
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row g-4">
+    @for (item of iniciativas; track $index) {
+      <div class="col-md-4">
+        
+        <div class="card h-100 border-0 shadow-sm card-hover">
+          
+          <div class="card-header-image d-flex align-items-center justify-content-center position-relative"
+               [ngClass]="getCardColor($index)">
+               
+               <span class="badge position-absolute top-0 end-0 m-3 px-3 py-2 rounded-pill shadow-sm"
+                     [ngClass]="item.estado === 'Activo' ? 'bg-white text-success fw-bold' : 'bg-secondary text-white'">
+                 {{ item.estado }}
+               </span>
+
+               <i class="bi text-white opacity-50" 
+                  [ngClass]="getIconoCategoria(item.id_categoria)" 
+                  style="font-size: 5rem;"></i>
+          </div>
+
+          <div class="card-body d-flex flex-column p-4">
+            
+            <h5 class="card-title fw-bold text-custom-dark mb-2 fs-4">
+              {{ item.nombre }}
+            </h5>
+            
+            <div class="d-flex align-items-center text-muted small mb-3">
+              <i class="bi bi-calendar-check me-2 text-success"></i>
+              <span class="fw-bold me-1">Inicio:</span> {{ item.fecha_inicio | date:'mediumDate' }}
+            </div>
+
+            <p class="card-text text-secondary text-truncate-3 mb-4 flex-grow-1">
+              {{ item.descripcion }}
+            </p>
+
+            <div class="mb-3">
+               <div class="d-flex justify-content-between small fw-bold text-muted mb-1">
+                 <span>Meta Alcanzada</span>
+                 <span>75%</span>
+               </div>
+               <div class="progress bg-light" style="height: 8px; border-radius: 10px;">
+                 <div class="progress-bar" 
+                      [ngClass]="getProgressBarColor($index)" 
+                      role="progressbar" style="width: 75%; border-radius: 10px;"></div>
+               </div>
+            </div>
+
+            @if (auth.getUserRole() === 'Administrador' || auth.getUserRole() === 'Organizador') {
+              <button class="btn btn-outline-dark w-100 fw-bold py-2 rounded-3" [routerLink]="['/iniciativas']">
+                <i class="bi bi-gear-fill me-2"></i> Gestionar
+              </button>
+            } @else {
+              <button class="btn btn-custom-green w-100 fw-bold py-2 rounded-3 shadow-sm" [routerLink]="['/actividades-disponibles']">
+                <i class="bi bi-heart-fill me-2"></i> Ver Actividades
+              </button>
+            }
+
+          </div>
+        </div>
+      </div>
+    } @empty {
+      <div class="col-12 text-center mt-5">
+         <div class="bg-light rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 100px; height: 100px;">
+            <i class="bi bi-tree text-muted fs-1"></i>
+         </div>
+         <h4 class="fw-bold text-secondary">No hay iniciativas activas</h4>
+         <p class="text-muted">Vuelve pronto para ver nuevos proyectos.</p>
+      </div>
+    }
+  </div>
+
+
+
+  
+
