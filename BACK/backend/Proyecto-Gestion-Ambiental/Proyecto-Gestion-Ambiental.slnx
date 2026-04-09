@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="ApiAmbiental/ApiAmbiental.csproj" Id="e05305b7-c9ca-4573-8db8-662ab6b09354" />
+  <Project Path="databasefirst/databasefirst.csproj" />
+</Solution>

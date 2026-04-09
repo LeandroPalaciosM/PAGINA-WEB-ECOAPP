@@ -1,0 +1,157 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\PERSONAL\\PAGINA WEB ECOAPP\\BACK\\Proyecto-Gestion-Ambiental\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{DC10416B-F24F-A5EE-95D0-8E9FA34F9C7F}|databasefirst\\databasefirst.csproj|c:\\personal\\pagina web ecoapp\\back\\proyecto-gestion-ambiental\\databasefirst\\contexts\\ambientalcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC10416B-F24F-A5EE-95D0-8E9FA34F9C7F}|databasefirst\\databasefirst.csproj|solutionrelative:databasefirst\\contexts\\ambientalcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E05305B7-C9CA-4573-8DB8-662AB6B09354}|ApiAmbiental\\ApiAmbiental.csproj|c:\\personal\\pagina web ecoapp\\back\\proyecto-gestion-ambiental\\apiambiental\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{E05305B7-C9CA-4573-8DB8-662AB6B09354}|ApiAmbiental\\ApiAmbiental.csproj|solutionrelative:apiambiental\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E05305B7-C9CA-4573-8DB8-662AB6B09354}|ApiAmbiental\\ApiAmbiental.csproj|c:\\personal\\pagina web ecoapp\\back\\proyecto-gestion-ambiental\\apiambiental\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E05305B7-C9CA-4573-8DB8-662AB6B09354}|ApiAmbiental\\ApiAmbiental.csproj|solutionrelative:apiambiental\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E05305B7-C9CA-4573-8DB8-662AB6B09354}|ApiAmbiental\\ApiAmbiental.csproj|c:\\personal\\pagina web ecoapp\\back\\proyecto-gestion-ambiental\\apiambiental\\controllers\\actividadscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E05305B7-C9CA-4573-8DB8-662AB6B09354}|ApiAmbiental\\ApiAmbiental.csproj|solutionrelative:apiambiental\\controllers\\actividadscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC10416B-F24F-A5EE-95D0-8E9FA34F9C7F}|databasefirst\\databasefirst.csproj|c:\\personal\\pagina web ecoapp\\back\\proyecto-gestion-ambiental\\databasefirst\\models\\reporte.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC10416B-F24F-A5EE-95D0-8E9FA34F9C7F}|databasefirst\\databasefirst.csproj|solutionrelative:databasefirst\\models\\reporte.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E05305B7-C9CA-4573-8DB8-662AB6B09354}|ApiAmbiental\\ApiAmbiental.csproj|c:\\personal\\pagina web ecoapp\\back\\proyecto-gestion-ambiental\\apiambiental\\models\\jwtsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E05305B7-C9CA-4573-8DB8-662AB6B09354}|ApiAmbiental\\ApiAmbiental.csproj|solutionrelative:apiambiental\\models\\jwtsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E05305B7-C9CA-4573-8DB8-662AB6B09354}|ApiAmbiental\\ApiAmbiental.csproj|c:\\personal\\pagina web ecoapp\\back\\proyecto-gestion-ambiental\\apiambiental\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E05305B7-C9CA-4573-8DB8-662AB6B09354}|ApiAmbiental\\ApiAmbiental.csproj|solutionrelative:apiambiental\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E05305B7-C9CA-4573-8DB8-662AB6B09354}|ApiAmbiental\\ApiAmbiental.csproj|c:\\personal\\pagina web ecoapp\\back\\proyecto-gestion-ambiental\\apiambiental\\controllers\\participacionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E05305B7-C9CA-4573-8DB8-662AB6B09354}|ApiAmbiental\\ApiAmbiental.csproj|solutionrelative:apiambiental\\controllers\\participacionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\PERSONAL\\PAGINA WEB ECOAPP\\BACK\\Proyecto-Gestion-Ambiental\\ApiAmbiental\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "ApiAmbiental\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\PERSONAL\\PAGINA WEB ECOAPP\\BACK\\Proyecto-Gestion-Ambiental\\ApiAmbiental\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "ApiAmbiental\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T03:27:44.36Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\PERSONAL\\PAGINA WEB ECOAPP\\BACK\\Proyecto-Gestion-Ambiental\\ApiAmbiental\\Program.cs",
+              "RelativeDocumentMoniker": "ApiAmbiental\\Program.cs",
+              "ToolTip": "C:\\PERSONAL\\PAGINA WEB ECOAPP\\BACK\\Proyecto-Gestion-Ambiental\\ApiAmbiental\\Program.cs",
+              "RelativeToolTip": "ApiAmbiental\\Program.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T03:13:36.352Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ActividadsController.cs",
+              "DocumentMoniker": "C:\\PERSONAL\\PAGINA WEB ECOAPP\\BACK\\Proyecto-Gestion-Ambiental\\ApiAmbiental\\Controllers\\ActividadsController.cs",
+              "RelativeDocumentMoniker": "ApiAmbiental\\Controllers\\ActividadsController.cs",
+              "ToolTip": "C:\\PERSONAL\\PAGINA WEB ECOAPP\\BACK\\Proyecto-Gestion-Ambiental\\ApiAmbiental\\Controllers\\ActividadsController.cs",
+              "RelativeToolTip": "ApiAmbiental\\Controllers\\ActividadsController.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAUwCEAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T02:55:32.439Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ParticipacionsController.cs",
+              "DocumentMoniker": "C:\\PERSONAL\\PAGINA WEB ECOAPP\\BACK\\Proyecto-Gestion-Ambiental\\ApiAmbiental\\Controllers\\ParticipacionsController.cs",
+              "RelativeDocumentMoniker": "ApiAmbiental\\Controllers\\ParticipacionsController.cs",
+              "ToolTip": "C:\\PERSONAL\\PAGINA WEB ECOAPP\\BACK\\Proyecto-Gestion-Ambiental\\ApiAmbiental\\Controllers\\ParticipacionsController.cs",
+              "RelativeToolTip": "ApiAmbiental\\Controllers\\ParticipacionsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T02:48:52.823Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\PERSONAL\\PAGINA WEB ECOAPP\\BACK\\Proyecto-Gestion-Ambiental\\ApiAmbiental\\appsettings.json",
+              "RelativeDocumentMoniker": "ApiAmbiental\\appsettings.json",
+              "ToolTip": "C:\\PERSONAL\\PAGINA WEB ECOAPP\\BACK\\Proyecto-Gestion-Ambiental\\ApiAmbiental\\appsettings.json",
+              "RelativeToolTip": "ApiAmbiental\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-02-08T03:23:17.977Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AmbientalContext.cs",
+              "DocumentMoniker": "C:\\PERSONAL\\PAGINA WEB ECOAPP\\BACK\\Proyecto-Gestion-Ambiental\\databasefirst\\Contexts\\AmbientalContext.cs",
+              "RelativeDocumentMoniker": "databasefirst\\Contexts\\AmbientalContext.cs",
+              "ToolTip": "C:\\PERSONAL\\PAGINA WEB ECOAPP\\BACK\\Proyecto-Gestion-Ambiental\\databasefirst\\Contexts\\AmbientalContext.cs",
+              "RelativeToolTip": "databasefirst\\Contexts\\AmbientalContext.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAA4wCQAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-30T04:28:33.913Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Reporte.cs",
+              "DocumentMoniker": "C:\\PERSONAL\\PAGINA WEB ECOAPP\\BACK\\Proyecto-Gestion-Ambiental\\databasefirst\\Models\\Reporte.cs",
+              "RelativeDocumentMoniker": "databasefirst\\Models\\Reporte.cs",
+              "ToolTip": "C:\\PERSONAL\\PAGINA WEB ECOAPP\\BACK\\Proyecto-Gestion-Ambiental\\databasefirst\\Models\\Reporte.cs",
+              "RelativeToolTip": "databasefirst\\Models\\Reporte.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA8AAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-10T03:25:50.768Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "JwtSettings.cs",
+              "DocumentMoniker": "C:\\PERSONAL\\PAGINA WEB ECOAPP\\BACK\\Proyecto-Gestion-Ambiental\\ApiAmbiental\\Models\\JwtSettings.cs",
+              "RelativeDocumentMoniker": "ApiAmbiental\\Models\\JwtSettings.cs",
+              "ToolTip": "C:\\PERSONAL\\PAGINA WEB ECOAPP\\BACK\\Proyecto-Gestion-Ambiental\\ApiAmbiental\\Models\\JwtSettings.cs",
+              "RelativeToolTip": "ApiAmbiental\\Models\\JwtSettings.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-11T03:12:53.263Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

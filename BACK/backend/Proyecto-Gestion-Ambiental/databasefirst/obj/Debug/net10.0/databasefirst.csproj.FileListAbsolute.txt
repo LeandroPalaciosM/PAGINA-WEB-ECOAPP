@@ -1,0 +1,28 @@
+C:\Users\User\OneDrive\DAWA\visual\Proyecto-Gestion-Ambiental\databasefirst\bin\Debug\net10.0\databasefirst.deps.json
+C:\Users\User\OneDrive\DAWA\visual\Proyecto-Gestion-Ambiental\databasefirst\bin\Debug\net10.0\databasefirst.runtimeconfig.json
+C:\Users\User\OneDrive\DAWA\visual\Proyecto-Gestion-Ambiental\databasefirst\bin\Debug\net10.0\databasefirst.dll
+C:\Users\User\OneDrive\DAWA\visual\Proyecto-Gestion-Ambiental\databasefirst\bin\Debug\net10.0\databasefirst.pdb
+C:\Users\User\OneDrive\DAWA\visual\Proyecto-Gestion-Ambiental\databasefirst\obj\Debug\net10.0\databasefirst.csproj.AssemblyReference.cache
+C:\Users\User\OneDrive\DAWA\visual\Proyecto-Gestion-Ambiental\databasefirst\obj\Debug\net10.0\databasefirst.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\OneDrive\DAWA\visual\Proyecto-Gestion-Ambiental\databasefirst\obj\Debug\net10.0\databasefirst.AssemblyInfoInputs.cache
+C:\Users\User\OneDrive\DAWA\visual\Proyecto-Gestion-Ambiental\databasefirst\obj\Debug\net10.0\databasefirst.AssemblyInfo.cs
+C:\Users\User\OneDrive\DAWA\visual\Proyecto-Gestion-Ambiental\databasefirst\obj\Debug\net10.0\databasefirst.csproj.CoreCompileInputs.cache
+C:\Users\User\OneDrive\DAWA\visual\Proyecto-Gestion-Ambiental\databasefirst\obj\Debug\net10.0\databasefirst.dll
+C:\Users\User\OneDrive\DAWA\visual\Proyecto-Gestion-Ambiental\databasefirst\obj\Debug\net10.0\refint\databasefirst.dll
+C:\Users\User\OneDrive\DAWA\visual\Proyecto-Gestion-Ambiental\databasefirst\obj\Debug\net10.0\databasefirst.pdb
+C:\Users\User\OneDrive\DAWA\visual\Proyecto-Gestion-Ambiental\databasefirst\obj\Debug\net10.0\databasefirst.genruntimeconfig.cache
+C:\Users\User\OneDrive\DAWA\visual\Proyecto-Gestion-Ambiental\databasefirst\obj\Debug\net10.0\ref\databasefirst.dll
+C:\PERSONAL\PAGINA WEB ECOAPP\BACK\Proyecto-Gestion-Ambiental\databasefirst\bin\Debug\net10.0\databasefirst.deps.json
+C:\PERSONAL\PAGINA WEB ECOAPP\BACK\Proyecto-Gestion-Ambiental\databasefirst\bin\Debug\net10.0\databasefirst.runtimeconfig.json
+C:\PERSONAL\PAGINA WEB ECOAPP\BACK\Proyecto-Gestion-Ambiental\databasefirst\bin\Debug\net10.0\databasefirst.dll
+C:\PERSONAL\PAGINA WEB ECOAPP\BACK\Proyecto-Gestion-Ambiental\databasefirst\bin\Debug\net10.0\databasefirst.pdb
+C:\PERSONAL\PAGINA WEB ECOAPP\BACK\Proyecto-Gestion-Ambiental\databasefirst\obj\Debug\net10.0\databasefirst.csproj.AssemblyReference.cache
+C:\PERSONAL\PAGINA WEB ECOAPP\BACK\Proyecto-Gestion-Ambiental\databasefirst\obj\Debug\net10.0\databasefirst.GeneratedMSBuildEditorConfig.editorconfig
+C:\PERSONAL\PAGINA WEB ECOAPP\BACK\Proyecto-Gestion-Ambiental\databasefirst\obj\Debug\net10.0\databasefirst.AssemblyInfoInputs.cache
+C:\PERSONAL\PAGINA WEB ECOAPP\BACK\Proyecto-Gestion-Ambiental\databasefirst\obj\Debug\net10.0\databasefirst.AssemblyInfo.cs
+C:\PERSONAL\PAGINA WEB ECOAPP\BACK\Proyecto-Gestion-Ambiental\databasefirst\obj\Debug\net10.0\databasefirst.csproj.CoreCompileInputs.cache
+C:\PERSONAL\PAGINA WEB ECOAPP\BACK\Proyecto-Gestion-Ambiental\databasefirst\obj\Debug\net10.0\databasefirst.dll
+C:\PERSONAL\PAGINA WEB ECOAPP\BACK\Proyecto-Gestion-Ambiental\databasefirst\obj\Debug\net10.0\refint\databasefirst.dll
+C:\PERSONAL\PAGINA WEB ECOAPP\BACK\Proyecto-Gestion-Ambiental\databasefirst\obj\Debug\net10.0\databasefirst.pdb
+C:\PERSONAL\PAGINA WEB ECOAPP\BACK\Proyecto-Gestion-Ambiental\databasefirst\obj\Debug\net10.0\databasefirst.genruntimeconfig.cache
+C:\PERSONAL\PAGINA WEB ECOAPP\BACK\Proyecto-Gestion-Ambiental\databasefirst\obj\Debug\net10.0\ref\databasefirst.dll
